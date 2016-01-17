@@ -17,8 +17,8 @@ class WelcomeController < ApplicationController
 
   def save
     content = params[:message]
-    email = params[:email]
-    user_id = User.find_by(email: email).id
+    @email = params[:email]
+    user_id = User.find_by(email: @email).id
     # user_id = 15
     puts "Da content is #{content}"
     new_message = Message.new
