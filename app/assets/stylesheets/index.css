@@ -2,7 +2,10 @@ h1{
   color:red;
 }
 #messageContainer{
-  display: none;
+  /*display: none;*/
+}
+#submitEmail{
+  /*display: none;*/
 }
 .center{
   text-align: center;
