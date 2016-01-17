@@ -1,0 +1,9 @@
+h1{
+  color:red;
+}
+#messageContainer{
+  display: none;
+}
+.center{
+  text-align: center;
+}

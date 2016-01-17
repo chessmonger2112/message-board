@@ -1,0 +1,17 @@
+<h1 class="center">Messages</h1>
+
+
+<% length = @messages.length %>
+<% @messages.each do |message| %>
+  <h4 class="center"><%=message.content %></h4>
+<% end %>
+
+<div id="messageContainer" class="center">
+  <input id="message" type="text">
+  <button id="messageSubmit">Submit</button>
+</div>
+<div id="loginContainer" class="center">
+  <p>Enter email here</p>
+  <input type="text" id="email">
+  <button id="login">Login</button>
+</div>
