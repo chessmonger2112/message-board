@@ -15,6 +15,7 @@ $(function(){
     $("#signUpContainer").show();
     $("#header").show();
     $("#header").text("Sign up");
+    $("#message").hide();
 
   });
   $("#chooseLogin").click(function(){
@@ -22,5 +23,7 @@ $(function(){
     $("#loginContainer").show();
     $("#header").show();
     $("#header").text("Login");
+    $("#message").hide();
+
   });
 });
