@@ -1,12 +1,32 @@
 h1{
   color:red;
+  text-align: center;
 }
 #messageContainer{
   /*display: none;*/
 }
 #submitEmail{
-  /*display: none;*/
+  display: none;
+}
+
+.hidden{
+  display: none;
 }
 .center{
   text-align: center;
+}
+.choose{
+  height: 300px;
+  width: 300px;
+}
+#chooseContainer{
+  text-align: center;
+}
+#chooseLogin{
+  background-color: red;
+  color: white;
+}
+#chooseSignUp{
+  background-color: blue;
+  color: white;
 }

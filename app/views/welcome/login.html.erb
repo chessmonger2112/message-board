@@ -1,5 +1,5 @@
-<h1 class="center">Time to log in sucka</h1>
-<div id="loginContainer" class="center">
+<h1 id="header" class="center hidden"></h1>
+<div id="signUpContainer" class="center hidden">
   <form action="/main" method="post">
   <p>Enter email here</p>
   <input type="text" id="email" name="email">
@@ -9,4 +9,16 @@
   <input type="text" id="name" name="name">
   <button id="login" type="submit">Login</button>
   </form>
+</div>
+<div id="loginContainer" class="center hidden">
+  <form action="/signedup" method="get">
+    <p>Enter email here</p>
+    <input type="text" id="email" name="email">
+    <p>Enter password here</p>
+    <input type="text" id="password" name="password">
+    <button type="submit">Submit that shit!</button>
+  </form>
+</div>
+<div id="chooseContainer">
+  <button id="chooseLogin" class="choose">Login</button><button id="chooseSignUp" class="choose">Sign up</button>
 </div>

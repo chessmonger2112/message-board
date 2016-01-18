@@ -10,4 +10,17 @@ $(function(){
     var content = $("#message").val();
     location.href = "/saveitup/" + content;
   });
+  $("#chooseSignUp").click(function(){
+    $("#chooseContainer").hide();
+    $("#signUpContainer").show();
+    $("#header").show();
+    $("#header").text("Sign up");
+
+  });
+  $("#chooseLogin").click(function(){
+    $("#chooseContainer").hide();
+    $("#loginContainer").show();
+    $("#header").show();
+    $("#header").text("Login");
+  });
 });
