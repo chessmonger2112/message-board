@@ -11,6 +11,9 @@ class WelcomeController < ApplicationController
     puts "logging in check"
     @og = "hidden"
   end
+  def show
+    @user_id = params[:id]
+  end
 
   def have_they_signed_up
     #login

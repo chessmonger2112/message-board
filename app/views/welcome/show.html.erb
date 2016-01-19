@@ -1,0 +1,10 @@
+<h1>All messages posted by user</h1>
+<div class="center">
+  <% user = User.find(@user_id) %>
+  <% name = user.name %>
+  <h4><%=name %></h4>
+  <% messages = user.messages %>
+  <% messages.each do |message| %>
+  <p><%= message.content %></p>
+  <% end %>
+</div>

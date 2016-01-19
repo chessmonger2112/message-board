@@ -1,8 +1,10 @@
-<h1 class="center">Messages</h1>
+<h1 class="center">Message Board</h1>
 
 <% length = @messages.length %>
 <% @messages.each do |message| %>
-  <h4 class="center"><%=message.content %></h4>
+<% user_id = message.user_id %>
+<% user_email = User.find(user_id).email %>
+  <h4 class="center"><span class="green"><%=message.content %></span> Posted by <a class="blue" href="/show/<%= user_id%>"><%= user_email%></a></h4>
 <% end %>
 
 <div id="messageContainer" class="center">
