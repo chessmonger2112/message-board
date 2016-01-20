@@ -1,14 +1,25 @@
 $(function(){
   var loggedIn = false;
   console.log("Testing");
-  $("#login").click(function(){
+  $("#signup").click(function(){
     var email = $("#email").val();
+    var name = $("#name").val();
+    var password = $("#password").val();
+    if (!email)
+    {
+      alert("email can't be blank");
+      return false;
+    }
+    else (!password)
+    {
+      alert("password can't be blank");
+      return false;
+    }
+
     loggedIn = true;
-    // location.href = "/main/" + email;
   });
   $("#messageSubmit").click(function() {
     var content = $("#message").val();
-    location.href = "/saveitup/" + content;
   });
   $("#chooseSignUp").click(function(){
     $("#chooseContainer").hide();
@@ -16,7 +27,6 @@ $(function(){
     $("#header").show();
     $("#header").text("Sign up");
     $("#message").hide();
-
   });
   $("#chooseLogin").click(function(){
     $("#chooseContainer").hide();
@@ -24,6 +34,5 @@ $(function(){
     $("#header").show();
     $("#header").text("Login");
     $("#message").hide();
-
   });
 });
