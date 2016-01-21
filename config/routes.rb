@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   root "welcome#login"
 
   # Example of regular route:
-    post "/save/" => "welcome#save"
-    post "/main/" => "welcome#index"
+
     get "/signedup" => "welcome#have_they_signed_up"
     get "signedup_again" => "welcome#signup_checking_for_signup"
     get "/show/:id" => "welcome#show"
+    post "/save/" => "welcome#save"
+    post "/main/" => "welcome#index"
+    post "/message" => "welcome#delete_message"
+
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

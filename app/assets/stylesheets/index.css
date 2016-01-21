@@ -36,3 +36,6 @@ h1{
 .green{
   color:green;
 }
+.inline{
+  display: inline;
+}

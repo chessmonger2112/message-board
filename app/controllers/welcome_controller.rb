@@ -1,11 +1,18 @@
 class WelcomeController < ApplicationController
+  def delete_message
+    message_id = params[:message_id]
+    puts "Message about to face eradication is #{message_id}"
+    message = Message.find(message_id)
+    message.delete
+    @messages = Message.all
+    render "index"
+  end
   def index
     @users = User.all
     @messages = Message.all
     @email = params[:email]
     password = params[:password]
     name = params[:name]
-
   end
   def login
     puts "logging in check"
@@ -26,6 +33,7 @@ class WelcomeController < ApplicationController
     if email_id == password_id && email_id && password_id
       name = User.find(email_id).name
       @message = "Welcome back #{name}"
+      session[:current_user_id] =email_id.id
       render "index"
     elsif email_id
       @message = "Email doesn't match the password."
@@ -56,6 +64,7 @@ class WelcomeController < ApplicationController
       user.password = password
       user.save
       @message = "Sign up successful!!"
+      session[:current_user_id] =email_id.id
       render "index"
     end
   end
