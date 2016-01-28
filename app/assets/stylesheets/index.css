@@ -1,3 +1,6 @@
+body{
+  background-color: gray;
+}
 h1{
   color:red;
   text-align: center;
@@ -38,4 +41,31 @@ h1{
 }
 .inline{
   display: inline;
+}
+#password{
+  margin-bottom: 15px;
+}
+
+#loginContainer{
+  margin-top: 15%;
+  background-color: white;
+  width: 15%;
+  position: absolute;
+  left: 42.5%; /* left = .5(100% - width%)*/
+}
+#signUpContainer{
+  margin-top: 15%;
+  background-color: white;
+  width: 15%;
+  position: absolute;
+  left: 42.5%; /* left = .5(100% - width%)*/
+}
+#login{
+  margin-bottom: 10px;
+}
+#name{
+  margin-bottom: 10px;
+}
+#signup{
+  margin-bottom: 10px;
 }

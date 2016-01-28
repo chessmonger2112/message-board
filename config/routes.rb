@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root "welcome#login"
-
   get "/signedup" => "welcome#have_they_signed_up"
   get "signedup_again" => "welcome#signup_checking_for_signup"
   get "/show/:id" => "welcome#show"

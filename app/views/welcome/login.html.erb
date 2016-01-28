@@ -1,6 +1,6 @@
 <h1 id="message" class="center"><%=@message%></h1>
-<h1 id="header" class="center hidden"></h1>
 <div id="signUpContainer" class="center hidden">
+  <h1>Signup</h1>
   <form action="/signedup_again" method="get">
   <p>Enter email here</p>
   <input type="text" id="email" name="email">
@@ -8,16 +8,17 @@
   <input type="text" id="password" name="password">
   <p>Enter name here</p>
   <input type="text" id="name" name="name">
-  <button id="signup" type="submit">Login</button>
+  <div><button id="signup" type="submit">Login</button></div>
   </form>
 </div>
 <div id="loginContainer" class="center <%=@og %>">
+  <h1>Login</h1>
   <form action="/signedup" method="get">
     <p>Enter email here</p>
     <input type="text" id="email" name="email">
     <p>Enter password here</p>
     <input type="text" id="password" name="password">
-    <button id="login" type="submit">Submit that shit!</button>
+    <div><button id="login" type="submit">Submit</button></div>
   </form>
 </div>
 <div id="chooseContainer" class="<%=@hidden %>">
