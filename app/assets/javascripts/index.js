@@ -35,4 +35,9 @@ $(function(){
     $("#header").text("Login");
     $("#message").hide();
   });
+  $(".edit").click(function() {
+    var id = this.value;
+    console.log("value is ",id);
+    $("#" + id).css("display","inline");
+  });
 });

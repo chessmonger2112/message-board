@@ -1,9 +1,16 @@
 class WelcomeController < ApplicationController
   def delete_message
     message_id = params[:message_id]
-    puts "Message about to face eradication is #{message_id}"
     message = Message.find(message_id)
     message.delete
+    @messages = Message.all
+    render "index"
+  end
+  def edit
+    id = params[:message_id]
+    new_content = params[:edited_message]
+    message = Message.find(id)
+    message.update_attribute(:content, new_content)
     @messages = Message.all
     render "index"
   end
@@ -54,7 +61,6 @@ class WelcomeController < ApplicationController
     name = params[:name]
     if User.find_by(email: @email)
       @message = "Email already in use."
-      # @hidden = "hidden"
       @og = "hidden"
       render "login"
     else
