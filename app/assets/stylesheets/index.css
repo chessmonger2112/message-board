@@ -76,5 +76,11 @@ h1{
   margin-bottom: 10px;
 }
 #index{
+  background-color: gray;
+}
+#indexContainer{
+  width: 50%;
+  position: absolute;
+  left : 25%; /* left = .5(100% - width%)*/
   background-color: white;
 }
