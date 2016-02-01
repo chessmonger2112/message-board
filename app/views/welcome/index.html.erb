@@ -7,6 +7,10 @@
   <% user_id = message.user_id %>
   <% user_email = User.find(user_id).email %>
   <% message_id = message.id %>
+  <% edited = "test edit" %>
+  <% if message.edited%>
+    <% edited = " EDITED"%>
+  <% end %>
   <% if user_id == current_id%>
     <h4 class="center"><span class="green">
       <%=message.content %></span> Posted by <a class="blue" href="/show/<%= user_id%>"><%= user_email%></a>
@@ -18,9 +22,13 @@
       <form class="center inline" method="post" action="/message">
         <input class="hidden" name="message_id" value="<%=message_id%>"><button type="submit" class="Delete">Delete</button>
       </form>
+      <%= edited %>
     </h4>
   <% else %>
-    <h4 class="center"><span class="green"><%=message.content %></span> Posted by <a class="blue" href="/show/<%= user_id%>"><%= user_email%></a></h4>
+    <h4 class="center">
+      <span class="green"><%=message.content %></span> Posted by <a class="blue" href="/show/<%= user_id%>"><%= user_email%></a>
+      <%= edited %>
+    </h4>
   <% end %>
 <% end %>
 

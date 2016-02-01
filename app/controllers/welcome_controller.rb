@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
     new_content = params[:edited_message]
     message = Message.find(id)
     message.update_attribute(:content, new_content)
+    message.update_attribute(:edited, true)
     @messages = Message.all
     render "index"
   end

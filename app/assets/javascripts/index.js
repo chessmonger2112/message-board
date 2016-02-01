@@ -15,7 +15,6 @@ $(function(){
       alert("password can't be blank");
       return false;
     }
-
     loggedIn = true;
   });
   $("#messageSubmit").click(function() {
@@ -33,7 +32,7 @@ $(function(){
   });
   $(".edit").click(function() {
     var id = this.value;
-    console.log("value is ",id);
+    $(this).hide();
     $("#" + id).css("display","inline");
   });
 });
