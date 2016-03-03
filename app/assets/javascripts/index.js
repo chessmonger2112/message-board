@@ -10,7 +10,7 @@ $(function(){
       alert("email can't be blank");
       return false;
     }
-    else (!password)
+    else if(!password)
     {
       alert("password can't be blank");
       return false;

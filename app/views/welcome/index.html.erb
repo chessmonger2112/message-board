@@ -9,13 +9,13 @@
       <% user_id = message.user_id %>
       <% user_email = User.find(user_id).email %>
       <% message_id = message.id %>
-      <% edited = "test edit" %>
       <% if message.edited%>
         <% edited = " EDITED"%>
       <% end %>
       <% if user_id == current_id%>
-        <h4 class="center"><span class="green">
-          <%=message.content %></span> Posted by <a class="blue" href="/show/<%= user_id%>"><%= user_email%></a>
+        <h4 class="center">
+          <div><span class="green"><%=message.content %></span></div>
+          <div class="messageDetails"> Posted by <a class="blue" href="/show/<%= user_id%>"><%= user_email%></a></div>
           <button class="edit" value="form<%=message_id%>">Edit</button>
           <form class="hidden" id="form<%=message_id%>" method="post" action="/edit">
             <input type="text" class="hidden" name="message_id" value="<%=message_id%>">

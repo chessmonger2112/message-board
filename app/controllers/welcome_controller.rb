@@ -71,7 +71,7 @@ class WelcomeController < ApplicationController
       user.password = password
       user.save
       @message = "Sign up successful!!"
-      session[:current_user_id] =email_id.id
+      session[:current_user_id] = user.id
       render "index"
     end
   end
