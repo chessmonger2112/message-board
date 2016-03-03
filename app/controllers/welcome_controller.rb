@@ -15,6 +15,24 @@ class WelcomeController < ApplicationController
     @messages = Message.all
     render "index"
   end
+
+  def like
+    message_id = params[:message_id]
+    message = Message.find(message_id)
+
+    liker_id = session[:current_user_id]
+    liker = User.find(liker_id)
+
+    author_id = message.user_id
+    author = User.find(author_id)
+    author_name = author.name
+
+    message.likes.create(user: liker)
+    puts "The content of this liked message is #{message.content}. The person who liked is #{User.find(liker_id).name}. The author is #{author_name}"
+    @messages = Message.all
+    render "index"
+  end
+
   def index
     @users = User.all
     @messages = Message.all
@@ -36,14 +54,15 @@ class WelcomeController < ApplicationController
     @messages = Message.all
     @email = params[:email]
     password = params[:password]
-    email_id = User.find_by(email: @email)
-    password_id = User.find_by(password: password)
-    if email_id == password_id && email_id && password_id
-      name = User.find(email_id).name
+    puts "DEBUG: email is #{@email}, password is #{password}"
+    user = User.find_by(email: @email)
+
+    if password == user.password && user && password
+      name = User.find(user).name
       @message = "Welcome back #{name}"
-      session[:current_user_id] =email_id.id
+      session[:current_user_id] = user.id
       render "index"
-    elsif email_id
+    elsif user
       @message = "Email doesn't match the password."
       @og = "hidden"
       render "login"

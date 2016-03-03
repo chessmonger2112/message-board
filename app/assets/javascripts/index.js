@@ -35,4 +35,5 @@ $(function(){
     $(this).hide();
     $("#" + id).css("display","inline");
   });
+  $(".like").click(() => console.log("liked!!"));
 });

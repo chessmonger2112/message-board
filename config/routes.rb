@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "/main/" => "welcome#index"
   post "/message" => "welcome#delete_message"
   post "/edit" => "welcome#edit"
+  post "/like" => "welcome#like"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
