@@ -1,34 +1,22 @@
 class WelcomeController < ApplicationController
   def delete_message
     message_id = params[:message_id]
-    message = Message.find(message_id)
-    message.delete
+    Message.delete_message message_id
     @messages = Message.all
     render "index"
   end
   def edit
     id = params[:message_id]
-    message = Message.find(id)
     new_content = params[:edited_message]
-    message.update_attribute(:content, new_content)
-    message.update_attribute(:edited, true)
+    Message.edit id, new_content
     @messages = Message.all
     render "index"
   end
 
   def like
     message_id = params[:message_id]
-    message = Message.find(message_id)
-
     liker_id = session[:current_user_id]
-    liker = User.find(liker_id)
-
-    author_id = message.user_id
-    author = User.find(author_id)
-    author_name = author.name
-
-    message.likes.create(user: liker)
-    puts "The content of this liked message is #{message.content}. The person who liked is #{User.find(liker_id).name}. The author is #{author_name}"
+    Message.like(message_id,liker_id)
     @messages = Message.all
     render "index"
   end
@@ -41,7 +29,6 @@ class WelcomeController < ApplicationController
     name = params[:name]
   end
   def login
-    puts "logging in check"
     @og = "hidden"
   end
   def show
@@ -54,9 +41,8 @@ class WelcomeController < ApplicationController
     @messages = Message.all
     @email = params[:email]
     password = params[:password]
-    user = User.find_by(email: @email)
-    informs = User.login(user,password)
-    session[:current_user_id] = user.id if informs[1] == "index"
+    informs = User.login(@email,password)
+    session[:current_user_id] = informs[3] if informs[1] == "index"
     @message = informs[0]
     @og = informs[2]
     render informs[1]
@@ -69,20 +55,17 @@ class WelcomeController < ApplicationController
     password = params[:password]
     name = params[:name]
     informs = User.sign_up(@email,password)
-    session[:current_user_id] = user.id if informs[1] == ""
-    @message = informs[0]
+    puts " user id should be #{informs[3]}"
+    session[:current_user_id] = informs[3] if informs[1] == "index"
     @og = informs[2]
+    @message = informs[0]
     render informs[1]
   end
 
   def save
     content = params[:message]
     @email = params[:email]
-    user_id = User.find_by(email: @email).id
-    new_message = Message.new
-    new_message.content = content
-    new_message.user_id = user_id
-    new_message.save
+    User.save @email, content
     @messages = Message.all
     render "index"
   end
