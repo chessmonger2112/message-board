@@ -8,8 +8,8 @@ class WelcomeController < ApplicationController
   end
   def edit
     id = params[:message_id]
-    new_content = params[:edited_message]
     message = Message.find(id)
+    new_content = params[:edited_message]
     message.update_attribute(:content, new_content)
     message.update_attribute(:edited, true)
     @messages = Message.all
@@ -48,51 +48,31 @@ class WelcomeController < ApplicationController
     @user_id = params[:id]
   end
 
-  def have_they_signed_up
+  def logging_in
     #login
     @users = User.all
     @messages = Message.all
     @email = params[:email]
     password = params[:password]
-    puts "DEBUG: email is #{@email}, password is #{password}"
     user = User.find_by(email: @email)
-
-    if password == user.password && user && password
-      name = User.find(user).name
-      @message = "Welcome back #{name}"
-      session[:current_user_id] = user.id
-      render "index"
-    elsif user
-      @message = "Email doesn't match the password."
-      @og = "hidden"
-      render "login"
-    else
-      @message = "Email not found."
-      @og = "hidden"
-      render "login"
-    end
+    informs = User.login(user,password)
+    session[:current_user_id] = user.id if informs[1] == "index"
+    @message = informs[0]
+    @og = informs[2]
+    render informs[1]
   end
 
-  def signup_checking_for_signup
+  def signing_up
     #sign up
     @messages = Message.all
     @email = params[:email]
     password = params[:password]
     name = params[:name]
-    if User.find_by(email: @email)
-      @message = "Email already in use."
-      @og = "hidden"
-      render "login"
-    else
-      user = User.new
-      user.email = @email
-      user.name = name
-      user.password = password
-      user.save
-      @message = "Sign up successful!!"
-      session[:current_user_id] = user.id
-      render "index"
-    end
+    informs = User.sign_up(@email,password)
+    session[:current_user_id] = user.id if informs[1] == ""
+    @message = informs[0]
+    @og = informs[2]
+    render informs[1]
   end
 
   def save
